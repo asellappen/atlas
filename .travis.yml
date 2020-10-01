@@ -37,6 +37,18 @@ matrix:
           packages: ['clang-3.8', 'gfortran']
 
     - os: linux
+    - arch: ppc64le
+      compiler: clang
+      env:
+        - CACHE_NAME=linux-clang38-mpich
+        - CXX_COMPILER='clang++-3.8' C_COMPILER='clang-3.8' Fortran_COMPILER='gfortran'
+        - MPI='mpich'
+        - ATLAS_CMAKE_OPTIONS="-DCMAKE_BUILD_TYPE=DEBUG"
+      addons:
+        apt:
+          sources:  ['llvm-toolchain-precise', 'ubuntu-toolchain-r-test']
+          packages: ['clang-3.8', 'gfortran']
+    - os: linux
       compiler: gcc
       env:
         - CACHE_NAME=linux-gcc5-openmpi
